@@ -1,0 +1,64 @@
+<!-- index.html -->
+<div id = "userform" class = "container">
+<div class="z-depth-4"  style="max-width: 800px;margin: 20px auto;"id="divMenuUraianKerja"> 
+			
+  <h6>Hola!, Bienvenido, no olvides bajar el TT de carga.</h6>
+
+<div class="ui-widget" id="ingresa_usuario">
+    <span class="value">
+      <select id ="usuario" name="user-choose" class="form-control select-usuario" onchange="resetDriveOption()" required>
+      <option disabled selected value="">Usuario</option>
+      <option value="211806">Melquiades Bautista</option>
+      <option value="216770">José Ignacio Sánchez</option>
+      <option value="223647">Jose Manuel Sánchez</option>
+      <option value="225606">Javier Canales</option>
+      <option value="60188">Armando Vargas</option>
+      <option value="209437">Manuel cruz</option>
+      <option value="223646">Samuel Maldonado</option>
+      <option value="165499">Midiam Guerrero</option>
+      <option value="142212">Esmeralda Cosme</option>
+      <option value="175989">Javier Montiel</option>
+      <option value="123266">Luis Olvera</option>
+      <option value="227158">Angel Rodriguez</option>
+      <option value="150365">Javier Soriano</option>
+                     
+      </select>
+      <div class = "invalid-feedback">required</div>    
+    </span>
+      
+</div><br>
+<div class="ui-widget" id="ingresa_unidad">
+    <span class="value">
+      <select id ="unidad" name="time-choose" class="form-control select-unidad" disabled="true" required>
+                     
+      </select>
+      <div class = "invalid-feedback">required</div>    
+    </span>
+      
+</div> 
+
+<br><div class="ui-widget">  
+  <input type="text" id="litro" name="litro" class="form-control" pattern="[0-6][0-9].[0-9]{2}" placeholder="Litros cargados..." required>
+  <p style="font-size:13px;color:blue;">Ejemplo: 60.00</p>
+  <div id = "telpattern" class = "invalid-feedback">Formato de litros incorrecto</div>
+  <div class = "invalid-feedback">required</div>        
+                     
+</div>
+<br><div class="ui-widget">  
+  <input type="text" id="precio" name="precio" class="form-control" pattern="[1-2][0-9].[0-9]{2}" placeholder="Precio..." required>
+  <div id = "telpattern" class = "invalid-feedback">Formato de precio incorrecto</div>
+  <p style="font-size:13px;color:blue;">Ejemplo: 20.99</p>
+  <div class = "invalid-feedback">required</div>                             
+</div>
+<br><div class="ui-widget">  
+  <input type="text" id="kilo" name="kilo" class="form-control" placeholder="Kilometraje actual.." required>
+  <div class = "invalid-feedback">required</div>                             
+</div>
+
+<div id = "display_error"></div>
+<br><button id = "save-btn" type="button" class="btn btn-primary mb-2" onclick="afterButtonClick()">Registro</button>
+   
+</div>
+<center><p style="font-size:14px;color:brown;">Planta Interna 2022, Contact us, cel 222-7369888</p></center>
+</div><!-- Container -->
+<!-- index.html -->

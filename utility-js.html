@@ -1,0 +1,98 @@
+<script>
+//------------------------------------------------------------------------------------------// 
+//----------------         Load Page Function           ------------------------------------//
+//------------------------------------------------------------------------------------------//  
+  function loadingStart(){
+      document.getElementById("loading").classList.remove("invisible");
+      document.getElementById('app').style.display='none';
+  }
+       
+  function loadingEnd(){
+      document.getElementById("loading").classList.add("invisible");
+      document.getElementById('app').style.display='block';
+  }
+
+  function loadView(options){
+          
+      let id = typeof options.id === "undefined" ? "app": options.id;
+      let cb = typeof options.callback === "undefined" ? function(){}: options.callback;
+            
+      loadingStart();
+      google.script.run.withSuccessHandler(function(html){
+          
+             document.getElementById(id).innerHTML = html;
+             loadingEnd();
+             typeof options.params === "undefined" ? cb():cb(options.params); 
+      })[options.func]();
+         
+  }  
+
+  function loadAddView(){              
+       loadView({func:"loadAddView",callback:setAddView});
+       
+  }
+
+  function loadAddViewOnFail(){              
+       loadView({func:"loadAddView",callback:setAddViewOnFail});
+       
+  }
+
+  function setAddView(){    
+    loadingStart();
+    letGoTrim();
+    loadingEnd();
+    //google.script.run.withSuccessHandler(populateDates).getCalendar();
+  }
+
+  function setAddViewOnFail(){    
+    loadingStart();
+    document.getElementById("usuario").value = gUser;
+    document.getElementById("unidad").value = gDrive;
+    letGoTrim();
+    loadingEnd();
+    //google.script.run.withSuccessHandler(populateDates).getCalendar();
+  }
+
+//------------------------------------------------------------------------------------------// 
+//----------------         End Load Page Function       ------------------------------------//
+//------------------------------------------------------------------------------------------//  
+
+  function trim_text(el){
+    el.value = el.value.
+    replace(/(^\s*)|(\s*$)/gi, ""). // removes leading and trailing spaces
+    replace(/[ ]{2,}/gi, " "). // replaces multiple spaces with one space
+    replace(/\n +/, "\n"); // Removes spaces after newlines
+    return;
+  }
+
+  function letGoTrim(){
+    $(function(){
+      $("textarea").change(function(){
+        trim_text(this);
+      });
+
+      $("input").change(function(){
+        trim_text(this);
+      });
+    });
+  }
+
+  function checkLeapYears(input){  
+    year = parseInt(input); 
+    if(year % 400 == 0 || (year % 100 != 0 && year % 4 == 0)){      
+      return true;      
+    }else{
+          return false;      
+         }  
+  }
+
+  function isInt(n){
+    return n != "" && !isNaN(n) && Math.round(n) == n;
+  }
+
+  function isFloat(n){
+    return n != "" && !isNaN(n) && Math.round(n) != n;
+  }
+
+
+</script>  
